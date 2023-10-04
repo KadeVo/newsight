@@ -1,5 +1,13 @@
-import Image from 'next/image'
+import React from 'react'
+import NewsList from '../components/NewsList'
 
-export default function Home() {
-  return <div>Hello Newsight</div>
+const Home = () => {
+  return (
+    <div>
+      <h1>Welcome to My News App</h1>
+      <NewsList />
+    </div>
+  )
 }
+
+export default Home
