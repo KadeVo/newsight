@@ -1,7 +1,8 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { Article } from '@/interaces/interfaces'
+import Article from '@/interaces/interfaces'
 import config from '../config'
+import Image from 'next/image'
 
 const NewsList: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([])
@@ -28,15 +29,21 @@ const NewsList: React.FC = () => {
 
   return (
     <div>
-      <h1>Top Headlines in the US</h1>
+      <h1>Top Stories</h1>
       <ul>
-        {articles.map((article, index) => (
+        {articles.slice(0, 5).map((article, index) => (
           <li key={index}>
             <h2>{article.title}</h2>
             <p>{article.description}</p>
-            <a href={article.url} target="_blank" rel="noopener noreferrer">
-              Read More
-            </a>
+            {article.urlToImage ? (
+              <img
+                src={article.urlToImage}
+                alt={article.title}
+                className="h-20 w-20"
+              />
+            ) : (
+              <img src="public/next.svg" alt="Default" className="h-20 w-20" />
+            )}
           </li>
         ))}
       </ul>

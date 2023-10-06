@@ -1,5 +1,15 @@
-export interface Article {
+interface Article {
+  source: {
+    id: string | null
+    name: string
+  }
+  author: string
   title: string
-  url: string
   description: string
+  url: string
+  urlToImage: string
+  publishedAt: string
+  content: string
 }
+
+export default Article
