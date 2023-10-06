@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react'
 import Article from '@/interaces/interfaces'
 import config from '../config'
-import Image from 'next/image'
 
 const NewsList: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([])
