@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import Article from '@/interaces/interfaces'
 import config from '../config'
-
+import Image from 'next/image'
 const NewsList: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([])
   const apiKey = config.NEWS_API_KEY
@@ -34,6 +34,7 @@ const NewsList: React.FC = () => {
           <li key={index}>
             <h2>{article.title}</h2>
             <p>{article.description}</p>
+            <a href={article.url}>Click to read more </a>
             {article.urlToImage ? (
               <img
                 src={article.urlToImage}
@@ -41,7 +42,11 @@ const NewsList: React.FC = () => {
                 className="h-20 w-20"
               />
             ) : (
-              <img src="public/next.svg" alt="Default" className="h-20 w-20" />
+              <Image
+                src="public/images/placeholder.PNG"
+                alt="No Image available"
+                className="h-20 w-20"
+              />
             )}
           </li>
         ))}
