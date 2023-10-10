@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <nav className="bg-gray-800 p-4 text-white">
       <div className="flex items-center justify-end space-x-8">
-        <Link href="/api/pages">
+        <Link href="/pages">
           <p>Pages</p>
         </Link>
       </div>

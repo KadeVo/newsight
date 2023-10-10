@@ -1,3 +1,4 @@
+'use client'
 import { useState, useEffect } from 'react'
 import config from '../../config'
 import Article from '@/interaces/interfaces'
@@ -8,7 +9,7 @@ const NewsPage = () => {
   const [articles, setArticles] = useState<Article[]>([])
 
   const apiKey = config.NEWS_API_KEY
-  const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&page=${currentPage}&apiKey=${apiKey}`
+  const apiUrl = `https://newsapi.org/v2/top-headlines?country=au&page=${currentPage}&apiKey=${apiKey}`
 
   const fetchPageNews = async () => {
     try {
@@ -41,9 +42,10 @@ const NewsPage = () => {
               />
             ) : (
               <Image
-                src="/images/placeholder.PNG" // Correct path to your placeholder image
+                src="/public/images/placeholder.PNG"
                 alt="No Image available"
-                className="h-20 w-20"
+                width={20}
+                height={20}
               />
             )}
           </li>
