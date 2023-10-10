@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import Link from 'next/link'
 
 const Navbar = () => {
   const [isCategoryDropdownVisible, setCategoryDropdownVisible] =
@@ -9,6 +10,12 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-800 p-4 text-white">
+      <div className="flex items-center justify-end space-x-8">
+        <Link href="/api/pages">
+          <p>Pages</p>
+        </Link>
+      </div>
+
       <div className="flex items-center justify-end space-x-8">
         <div
           className="relative group"

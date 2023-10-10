@@ -1,6 +1,6 @@
 import React from 'react'
-import NewsList from '../components/NewsList'
-import Navbar from '@/components/Nav'
+import NewsList from './components/NewsList'
+import Navbar from '@/app/components/Nav'
 
 const Home = () => {
   return (
