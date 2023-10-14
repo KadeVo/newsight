@@ -6,7 +6,7 @@ const Pages = () => {
   return (
     <div>
       <Navbar />
-      <h1>Welcome to My News App</h1>
+      <h1>Todays News</h1>
       <PagesList />
     </div>
   )

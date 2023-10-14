@@ -43,9 +43,10 @@ const NewsList: React.FC = () => {
               />
             ) : (
               <Image
-                src="public/images/placeholder.PNG"
+                src="images/placeholder.PNG"
                 alt="No Image available"
-                className="h-20 w-20"
+                width={200}
+                height={200}
               />
             )}
           </li>

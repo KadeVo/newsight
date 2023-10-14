@@ -15,6 +15,7 @@ const NewsPage = () => {
     try {
       const response = await fetch(apiUrl)
       const data = await response.json()
+      console.log(data)
       setArticles(data.articles)
     } catch (error) {
       console.error(error)
@@ -32,8 +33,6 @@ const NewsPage = () => {
         {articles.slice(0, 5).map((article, index) => (
           <li key={index}>
             <h2>{article.title}</h2>
-            <p>{article.description}</p>
-            <a href={article.url}>Click to read more </a>
             {article.urlToImage ? (
               <img
                 src={article.urlToImage}
@@ -42,12 +41,14 @@ const NewsPage = () => {
               />
             ) : (
               <Image
-                src="/public/images/placeholder.PNG"
+                src="/images/placeholder.PNG"
                 alt="No Image available"
-                width={20}
-                height={20}
+                width={200}
+                height={200}
               />
             )}
+            <p>{article.description}</p>
+            <a href={article.url}>Click to read more </a>
           </li>
         ))}
       </ul>
