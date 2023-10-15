@@ -36,13 +36,6 @@ const NewsList: React.FC = () => {
             <h2 className="text-2xl font-semibold text-black">
               {article.title}
             </h2>
-            <p className="text-gray-700">{article.description}</p>
-            <a
-              href={article.url}
-              className="text-blue-500 hover:underline inline-block"
-            >
-              Click to read more
-            </a>
             {article.urlToImage ? (
               <div className="flex justify-center items-center">
                 <img
@@ -58,9 +51,18 @@ const NewsList: React.FC = () => {
                   src="/images/placeholder.PNG"
                   alt="No Image available"
                   className="mx-auto"
+                  width={200}
+                  height={200}
                 />
               </div>
             )}
+            <p className="text-gray-700">{article.description}</p>
+            <a
+              href={article.url}
+              className="text-blue-500 hover:underline inline-block"
+            >
+              Click to read more
+            </a>
           </li>
         ))}
       </ul>

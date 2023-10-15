@@ -54,7 +54,9 @@ const Navbar = () => {
           >
             <p className="cursor-pointer">USA</p>
             <p className="cursor-pointer">Korea</p>
-            <p className="cursor-pointer">Japan</p>
+            <Link href="/japan">
+              <p className="cursor-pointer">Japan</p>
+            </Link>
           </div>
         )}
       </div>

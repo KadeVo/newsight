@@ -4,18 +4,17 @@ import config from '../../config'
 import Article from '@/interaces/interfaces'
 import Image from 'next/image'
 
-const PageList = () => {
+const JapanList = () => {
   const [currentPage, setPage] = useState(1)
   const [articles, setArticles] = useState<Article[]>([])
 
   const apiKey = config.NEWS_API_KEY
-  const apiUrl = `https://newsapi.org/v2/top-headlines?country=au&page=${currentPage}&apiKey=${apiKey}`
+  const apiUrl = `https://newsapi.org/v2/top-headlines?country=jp&page=${currentPage}&apiKey=${apiKey}`
 
-  const fetchPageNews = async () => {
+  const fetchJapanNews = async () => {
     try {
       const response = await fetch(apiUrl)
       const data = await response.json()
-      console.log(data)
       setArticles(data.articles)
     } catch (error) {
       console.error(error)
@@ -23,17 +22,21 @@ const PageList = () => {
   }
 
   useEffect(() => {
-    fetchPageNews()
+    fetchJapanNews()
   }, [currentPage])
 
   return (
     <div className="max-w-screen-md mx-auto p-4 text-center">
-      <h1 className="text-3xl font-bold mb-6">Top Stories</h1>
+      <h1 className="text-3xl font-bold mb-6 text-black">
+        Top Stories in Japan
+      </h1>
       <ul className="space-y-8">
         {articles.map((article, index) => (
           <li key={index} className="space-y-2">
-            <h2 className="text-2xl font-semibold">{article.title}</h2>
-            <div className="flex jusitfy-center text-center w-full h-40 rounded overflow-hidden">
+            <h2 className="text-2xl font-semibold text-black">
+              {article.title}
+            </h2>
+            <div className="flex justify-center items-center w-full h-40 rounded overflow-hidden">
               {article.urlToImage ? (
                 <img
                   src={article.urlToImage}
@@ -81,4 +84,4 @@ const PageList = () => {
   )
 }
 
-export default PageList
+export default JapanList
