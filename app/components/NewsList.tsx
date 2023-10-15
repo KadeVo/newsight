@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react'
 import Article from '@/interaces/interfaces'
 import config from '../../config'
 import Image from 'next/image'
+
 const NewsList: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([])
   const apiKey = config.NEWS_API_KEY
+
   useEffect(() => {
     const fetchNews = async () => {
       try {
@@ -16,7 +18,6 @@ const NewsList: React.FC = () => {
         }
 
         const data = await response.json()
-        console.log(data)
         setArticles(data.articles)
       } catch (error) {
         console.error('Error fetching news:', error)
@@ -27,27 +28,37 @@ const NewsList: React.FC = () => {
   }, [])
 
   return (
-    <div>
-      <h1>Top Stories</h1>
-      <ul>
+    <div className="max-w-screen-md mx-auto p-4 text-center">
+      <h1 className="text-3xl font-bold mb-6">Top Stories</h1>
+      <ul className="space-y-8">
         {articles.slice(0, 5).map((article, index) => (
-          <li key={index}>
-            <h2>{article.title}</h2>
-            <p>{article.description}</p>
-            <a href={article.url}>Click to read more </a>
+          <li key={index} className="space-y-2">
+            <h2 className="text-2xl font-semibold">{article.title}</h2>
+            <p className="text-gray-700">{article.description}</p>
+            <a
+              href={article.url}
+              className="text-blue-500 hover:underline inline-block"
+            >
+              Click to read more
+            </a>
             {article.urlToImage ? (
-              <img
-                src={article.urlToImage}
-                alt={article.title}
-                className="h-20 w-20"
-              />
+              <div className="flex justify-center items-center h-40 w-40">
+                <img
+                  src={article.urlToImage}
+                  alt={article.title}
+                  width={200}
+                  height={200}
+                />
+              </div>
             ) : (
-              <Image
-                src="images/placeholder.PNG"
-                alt="No Image available"
-                width={200}
-                height={200}
-              />
+              <div className="flex justify-center items-center h-40 w-40 bg-gray-300">
+                <Image
+                  src="/images/placeholder.PNG"
+                  alt="No Image available"
+                  width={200}
+                  height={200}
+                />
+              </div>
             )}
           </li>
         ))}
