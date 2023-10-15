@@ -42,7 +42,7 @@ const NewsList: React.FC = () => {
               Click to read more
             </a>
             {article.urlToImage ? (
-              <div className="flex justify-center items-center h-40 w-40">
+              <div className="flex justify-center items-center">
                 <img
                   src={article.urlToImage}
                   alt={article.title}
@@ -51,12 +51,11 @@ const NewsList: React.FC = () => {
                 />
               </div>
             ) : (
-              <div className="flex justify-center items-center h-40 w-40 bg-gray-300">
+              <div className="flex justify-center items-center mx-auto">
                 <Image
                   src="/images/placeholder.PNG"
                   alt="No Image available"
-                  width={200}
-                  height={200}
+                  className="mx-auto"
                 />
               </div>
             )}

@@ -32,7 +32,7 @@ const PageList = () => {
         {articles.map((article, index) => (
           <li key={index} className="space-y-2">
             <h2 className="text-2xl font-semibold">{article.title}</h2>
-            <div className="w-full h-40 rounded overflow-hidden">
+            <div className="flex jusitfy-center text-center w-full h-40 rounded overflow-hidden">
               {article.urlToImage ? (
                 <img
                   src={article.urlToImage}
@@ -44,8 +44,9 @@ const PageList = () => {
                 <Image
                   src="/images/placeholder.PNG"
                   alt="No Image available"
-                  width={200}
-                  height={200}
+                  className="mx-auto"
+                  width={150}
+                  height={150}
                 />
               )}
             </div>
