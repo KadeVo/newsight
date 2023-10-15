@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
-import { useCountry } from './CountryContext'
+import { useCountry } from '@/app/components/CountryContext'
 
 const Navbar = () => {
   const { setSelectedCountry } = useCountry()
