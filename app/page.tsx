@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <h1>Welcome to My News App</h1>
+
       <NewsList />
     </div>
   )
