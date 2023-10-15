@@ -14,7 +14,12 @@ const Navbar = () => {
         <p className="cursor-pointer">Pages</p>
       </Link>
 
-      <div className="relative group">
+      <div
+        className="relative group"
+        onMouseEnter={() => {
+          setCategoryDropdownVisible(true)
+        }}
+      >
         Categories
         {isCategoryDropdownVisible && (
           <div
@@ -33,7 +38,12 @@ const Navbar = () => {
           </div>
         )}
       </div>
-      <div className="relative group">
+      <div
+        className="relative group"
+        onMouseEnter={() => {
+          setLocationDropdownVisible(true)
+        }}
+      >
         Locations
         {isLocationDropdownVisible && (
           <div
