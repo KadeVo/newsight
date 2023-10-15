@@ -1,12 +1,18 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
+import { useCountry } from './CountryContext'
 
 const Navbar = () => {
+  const { setSelectedCountry } = useCountry()
   const [isCategoryDropdownVisible, setCategoryDropdownVisible] =
     useState(false)
   const [isLocationDropdownVisible, setLocationDropdownVisible] =
     useState(false)
+
+  const handleCountryChange = (countryCode: string) => {
+    setSelectedCountry(countryCode)
+  }
 
   return (
     <nav className="bg-gray-800 p-4 text-white flex justify-end items-center space-x-8">
@@ -52,9 +58,24 @@ const Navbar = () => {
               setLocationDropdownVisible(false)
             }}
           >
-            <p className="cursor-pointer">USA</p>
-            <p className="cursor-pointer">Korea</p>
-            <p className="cursor-pointer">Japan</p>
+            <p
+              className="cursor-pointer"
+              onClick={() => handleCountryChange('us')}
+            >
+              USA
+            </p>
+            <p
+              className="cursor-pointer"
+              onClick={() => handleCountryChange('kr')}
+            >
+              Korea
+            </p>
+            <p
+              className="cursor-pointer"
+              onClick={() => handleCountryChange('jp')}
+            >
+              Japan
+            </p>
           </div>
         )}
       </div>
