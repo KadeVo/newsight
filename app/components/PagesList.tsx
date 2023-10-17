@@ -28,11 +28,13 @@ const PageList = () => {
 
   return (
     <div className="max-w-screen-md mx-auto p-4 text-center">
-      <h1 className="text-3xl font-bold mb-6">Top Stories</h1>
+      <h1 className="text-3xl font-bold mb-6 text-black">Top Stories</h1>
       <ul className="space-y-8">
         {articles.map((article, index) => (
           <li key={index} className="space-y-2">
-            <h2 className="text-2xl font-semibold">{article.title}</h2>
+            <h2 className="text-2xl font-semibold text-black">
+              {article.title}
+            </h2>
             <div className="flex jusitfy-center text-center w-full h-40 rounded overflow-hidden">
               {article.urlToImage ? (
                 <img
@@ -40,6 +42,7 @@ const PageList = () => {
                   alt={article.title}
                   width={200}
                   height={200}
+                  className="mx-auto"
                 />
               ) : (
                 <Image
