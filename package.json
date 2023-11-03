@@ -15,7 +15,8 @@
     "next": "^13.5.4",
     "next-routes": "^1.4.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "translate-google": "^1.5.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.4",

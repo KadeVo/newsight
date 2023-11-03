@@ -10,6 +10,9 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-800 p-4 text-white flex justify-end items-center space-x-8">
+      <Link href="/">
+        <p className="pursor-pointer">Home</p>
+      </Link>
       <Link href="/pages">
         <p className="cursor-pointer">Pages</p>
       </Link>
