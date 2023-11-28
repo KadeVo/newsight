@@ -1,16 +1,16 @@
 'use client'
-import { useState, useEffect } from 'react'
-import config from '../../config'
+import React from 'react'
+import { useEffect, useState } from 'react'
+import Navbar from '../components/Nav'
 import Article from '@/interaces/interfaces'
-import Image from 'next/image'
+import config from '../../config'
 
-
-const JapanList = () => {
+const Korea = () => {
   const [currentPage, setPage] = useState(1)
   const [articles, setArticles] = useState<Article[]>([])
 
   const apiKey = config.NEWS_API_KEY
-  const apiUrl = `https://newsapi.org/v2/top-headlines?country=jp&page=${currentPage}&apiKey=${apiKey}`
+  const apiUrl = `https://newsapi.org/v2/top-headlines?country=kr&page=${currentPage}&apiKey=${apiKey}`
 
   const fetchJapanNews = async () => {
     try {
@@ -29,7 +29,7 @@ const JapanList = () => {
   return (
     <div className="max-w-screen-md mx-auto p-4 text-center">
       <h1 className="text-3xl font-bold mb-6 text-black">
-        Top Stories in Japan
+        Top Stories in Korea
       </h1>
       <ul className="space-y-8">
         {articles.map((article, index) => (
@@ -85,4 +85,4 @@ const JapanList = () => {
   )
 }
 
-export default JapanList
+export default Korea
