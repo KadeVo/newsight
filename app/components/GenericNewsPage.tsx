@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+'use client'
+import { useEffect, useState } from 'react'
+
+import { useRouter, useSearchParams } from 'next/navigation'
 import Article from '@/interaces/interfaces'
 import config from '../../config'
 
 const GenericNewsPage = () => {
   const router = useRouter()
-  const { country } = router.query
+  const searchParams = useSearchParams()
+  const { country } = searchParams.get('search') | null
 
   const [currentPage, setPage] = useState(1)
   const [articles, setArticles] = useState<Article[]>([])
