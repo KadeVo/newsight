@@ -11,7 +11,7 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`
+        const url = `https://newsapi.org/v2/top-headlines?country=us&pageSize=10&apiKey=${apiKey}`
         const response = await fetch(url)
         if (!response.ok) {
           throw new Error('Network response was not ok')
@@ -29,11 +29,11 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold tracking-tight text-center mb-8">
+      <h1 className="text-4xl font-bold tracking-tight text-center mb-8 text-black">
         Top Stories
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {articles.slice(0, 5).map((article, index) => (
+        {articles.slice(0, 10).map((article, index) => (
           <div
             key={index}
             className="bg-white p-6 rounded-lg shadow-md hover:bg-gray-100"
@@ -46,7 +46,7 @@ const HomePage: React.FC = () => {
                 <img
                   src={article.urlToImage}
                   alt={article.title}
-                  className="w-full h-full object-cover rounded-t-lg"
+                  className="w-full h-full object-cover rounded-t-lg pb-4 pt-4"
                 />
               </div>
             ) : (
@@ -60,7 +60,7 @@ const HomePage: React.FC = () => {
                 />
               </div>
             )}
-            <p className="text-gray-700 font-medium mb-4">
+            <p className="flex text-gray-700 font-medium mb-4 justify-center">
               {article.description}
             </p>
             <a
