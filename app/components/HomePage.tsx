@@ -4,7 +4,7 @@ import Article from '@/interaces/interfaces'
 import config from '../../config'
 import Image from 'next/image'
 
-const NewsList: React.FC = () => {
+const HomePage: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([])
   const apiKey = config.NEWS_API_KEY
 
@@ -70,4 +70,4 @@ const NewsList: React.FC = () => {
   )
 }
 
-export default NewsList
+export default HomePage
