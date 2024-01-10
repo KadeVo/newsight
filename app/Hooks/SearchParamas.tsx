@@ -1,13 +1,26 @@
 import { useSearchParams } from 'next/navigation'
 import config from '../../config'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
 export const useSearchParam = () => {
   const searchParams = useSearchParams()
   const apiKey = config.NEWS_API_KEY
-  const country = searchParams.get('country') || ''
-  // const page = searchParams.get('page') || ''
-  // const [currentPage, setPage] = useState(1)
-  const apiUrl = `https://newsapi.org/v2/top-headlines?country=${country}&page=1&apiKey=${apiKey}`
+  const [country, setCountry] = useState(searchParams.get('country') || '')
+  const [page, setPage] = useState(1)
 
-  return apiUrl
+  useEffect(() => {
+    setCountry(searchParams.get('country') || '')
+    const pageParam = parseInt(searchParams.get('page') || '1', 10)
+    setPage(pageParam)
+  }, [searchParams])
+
+  const apiUrl = `https://newsapi.org/v2/top-headlines?country=${country}&page=${page}&apiKey=${apiKey}`
+
+  return {
+    apiUrl,
+    country,
+    page,
+    setCountry,
+    setPage,
+  }
 }
