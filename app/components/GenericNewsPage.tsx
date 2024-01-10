@@ -8,7 +8,7 @@ import config from '../../config'
 const GenericNewsPage = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const { country } = searchParams.get('search') | null
+  const country = searchParams.get('')
 
   const [currentPage, setPage] = useState(1)
   const [articles, setArticles] = useState<Article[]>([])
