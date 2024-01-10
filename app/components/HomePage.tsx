@@ -28,21 +28,25 @@ const HomePage: React.FC = () => {
   }, [])
 
   return (
-    <div className="max-w-screen-md mx-auto p-4 text-center">
-      <h1 className="text-3xl font-bold mb-6 text-black">Top Stories</h1>
-      <ul className="space-y-8">
+    <div className="container mx-auto p-4">
+      <h1 className="text-4xl font-bold tracking-tight text-center mb-8">
+        Top Stories
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {articles.slice(0, 5).map((article, index) => (
-          <li key={index} className="space-y-2">
-            <h2 className="text-2xl font-semibold text-black">
+          <div
+            key={index}
+            className="bg-white p-6 rounded-lg shadow-md hover:bg-gray-100"
+          >
+            <h2 className="text-2xl font-semibold text-black mb-4">
               {article.title}
             </h2>
             {article.urlToImage ? (
-              <div className="flex justify-center items-center">
+              <div className="w-full h-500 object-cover rounded-t-lg">
                 <img
                   src={article.urlToImage}
                   alt={article.title}
-                  width={200}
-                  height={200}
+                  className="w-full h-full object-cover rounded-t-lg"
                 />
               </div>
             ) : (
@@ -56,16 +60,18 @@ const HomePage: React.FC = () => {
                 />
               </div>
             )}
-            <p className="text-gray-700">{article.description}</p>
+            <p className="text-gray-700 font-medium mb-4">
+              {article.description}
+            </p>
             <a
               href={article.url}
-              className="text-blue-500 hover:underline inline-block"
+              className="flex justify-center px-4 py-2 text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
-              Click to read more
+              Read More
             </a>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   )
 }
