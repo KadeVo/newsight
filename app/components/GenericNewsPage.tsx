@@ -1,20 +1,15 @@
 'use client'
 import { useEffect, useState } from 'react'
-
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import Article from '@/interaces/interfaces'
 import config from '../../config'
+import { useSearchParam } from '../Hooks/SearchParamas'
 
 const GenericNewsPage = () => {
   const router = useRouter()
-  const searchParams = useSearchParams()
-  const country = searchParams.get('')
-
-  const [currentPage, setPage] = useState(1)
+  const { apiUrl, country, page, setCountry, setPage } = useSearchParam()
   const [articles, setArticles] = useState<Article[]>([])
-
   const apiKey = config.NEWS_API_KEY
-  const apiUrl = `https://newsapi.org/v2/top-headlines?country=${country}&page=${currentPage}&apiKey=${apiKey}`
 
   const fetchData = async () => {
     try {
@@ -31,7 +26,7 @@ const GenericNewsPage = () => {
 
   useEffect(() => {
     fetchData()
-  }, [currentPage, country])
+  }, [apiUrl])
 
   return (
     <div className="max-w-screen-md mx-auto p-4 text-center">
@@ -75,15 +70,15 @@ const GenericNewsPage = () => {
       <div className="mt-8">
         <button
           className="bg-blue-500 text-white py-2 px-4 rounded mr-4"
-          onClick={() => setPage(currentPage - 1)}
-          disabled={currentPage === 1}
+          onClick={() => setPage(page - 1)}
+          disabled={page === 1}
         >
           Previous Page
         </button>
-        <span className="text-xl font-semibold">Page {currentPage}</span>
+        <span className="text-xl font-semibold">Page {page}</span>
         <button
           className="bg-blue-500 text-white py-2 px-4 rounded ml-4"
-          onClick={() => setPage(currentPage + 1)}
+          onClick={() => setPage(page + 1)}
         >
           Next Page
         </button>
