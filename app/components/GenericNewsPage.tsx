@@ -56,7 +56,7 @@ const GenericNewsPage = () => {
                   height={200}
                 />
               ) : (
-                <Image
+                <img
                   src="/images/placeholder.PNG"
                   alt="No Image available"
                   className="mx-auto"
