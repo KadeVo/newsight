@@ -29,10 +29,10 @@ const GenericNewsPage = () => {
 
   return (
     <div className="max-w-screen-md mx-auto p-4 text-center">
-      <h1 className="text-3xl font-bold mb-6 text-black">
+      <h1 className="text-4xl font-bold tracking-tight text-center mb-8 text-black">
         Top Stories in {country}
       </h1>
-      <label>Select Country:</label>
+      <label className="text-black pl-4">Select Country:</label>
       <select
         value={country}
         onChange={(e) => handleCountryChange(e.target.value)}
@@ -42,33 +42,34 @@ const GenericNewsPage = () => {
         <option value="kr">Korea</option>
       </select>
       <ul className="space-y-8">
-        {articles.map((article, index) => (
+        {articles.slice(0, 10).map((article, index) => (
           <li key={index} className="space-y-2">
-            <h2 className="text-2xl font-semibold text-black">
+            <h2 className="text-2xl font-semibold text-black mb-4">
               {article.title}
             </h2>
-            <div className="flex justify-center items-center w-full h-40 rounded overflow-hidden">
+            <div className="flex justify-center items-center w-full rounded overflow-hidden">
               {article.urlToImage ? (
-                <img
-                  src={article.urlToImage}
-                  alt={article.title}
-                  width={200}
-                  height={200}
-                />
+                <div className="flex justify-center w-full h-500 object-cover rounded-t-lg">
+                  <img src={article.urlToImage} alt={article.title} />
+                </div>
               ) : (
-                <img
-                  src="/images/placeholder.PNG"
-                  alt="No Image available"
-                  className="mx-auto"
-                  width={150}
-                  height={150}
-                />
+                <div className="flex justify-center items-center mx-auto">
+                  <img
+                    src="/images/placeholder.PNG"
+                    alt="No Image available"
+                    className="mx-auto"
+                    width={200}
+                    height={200}
+                  />
+                </div>
               )}
             </div>
-            <p className="text-gray-700">{article.description}</p>
+            <p className="flex text-gray-700 font-medium mb-4 justify-center">
+              {article.description}
+            </p>
             <a
               href={article.url}
-              className="text-blue-500 hover:underline inline-block"
+              className="flex justify-center px-4 py-2 text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               Click to read more
             </a>
@@ -83,7 +84,7 @@ const GenericNewsPage = () => {
         >
           Previous Page
         </button>
-        <span className="text-xl font-semibold">Page {page}</span>
+        <span className="text-xl font-semibold text-black">Page {page}</span>
         <button
           className="bg-blue-500 text-white py-2 px-4 rounded ml-4"
           onClick={() => setPage(page + 1)}
