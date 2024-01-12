@@ -1,13 +1,12 @@
 import React from 'react'
-import PagesList from '@/app/components/PagesList'
 import Navbar from '@/app/components/Nav'
-import NewsList from '../components/NewsList'
+import GenericNewsPage from '../components/GenericNewsPage'
 
 const Pages = () => {
   return (
     <div>
       <Navbar />
-      <NewsList />
+      <GenericNewsPage />
     </div>
   )
 }

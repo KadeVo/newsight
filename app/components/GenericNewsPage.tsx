@@ -1,16 +1,15 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Article from '@/interaces/interfaces'
-import config from '../../config'
 import { useSearchParam } from '../Hooks/SearchParamas'
 
 const GenericNewsPage = () => {
-  const router = useRouter()
   const { apiUrl, country, page, setCountry, setPage } = useSearchParam()
   const [articles, setArticles] = useState<Article[]>([])
-  const apiKey = config.NEWS_API_KEY
 
+  const handleCountryChange = (newCountry: string) => {
+    setCountry(newCountry)
+  }
   const fetchData = async () => {
     try {
       const response = await fetch(apiUrl)
@@ -33,6 +32,15 @@ const GenericNewsPage = () => {
       <h1 className="text-3xl font-bold mb-6 text-black">
         Top Stories in {country}
       </h1>
+      <label>Select Country:</label>
+      <select
+        value={country}
+        onChange={(e) => handleCountryChange(e.target.value)}
+      >
+        <option value="us">United States</option>
+        <option value="jp">Japan</option>
+        <option value="kr">Korea</option>
+      </select>
       <ul className="space-y-8">
         {articles.map((article, index) => (
           <li key={index} className="space-y-2">
