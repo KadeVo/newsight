@@ -20,6 +20,8 @@ const HomePage: React.FC = () => {
         }
 
         const data = await response.json()
+        console.log(apiUrl)
+        console.log(data)
         setArticles(data.articles)
       } catch (error) {
         console.error('Error fetching news:', error)
@@ -31,6 +33,7 @@ const HomePage: React.FC = () => {
 
   const handleSort = (newSort: string) => {
     setSort(newSort)
+    console.log(newSort)
   }
 
   return (
