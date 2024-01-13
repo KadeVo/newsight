@@ -4,8 +4,13 @@ import Article from '@/interaces/interfaces'
 import { useSearchParam } from '../Hooks/SearchParamas'
 
 const GenericNewsPage = () => {
-  const { apiUrl, country, page, setCountry, setPage } = useSearchParam()
+  const { apiUrl, country, page, setCountry, setPage, setCategory, category } =
+    useSearchParam()
   const [articles, setArticles] = useState<Article[]>([])
+
+  const handleCategoryChange = (newCategory: string) => {
+    setCategory(newCategory)
+  }
 
   const handleCountryChange = (newCountry: string) => {
     setCountry(newCountry)
@@ -41,6 +46,18 @@ const GenericNewsPage = () => {
         <option value="jp">Japan</option>
         <option value="kr">Korea</option>
       </select>
+      <br></br>
+
+      <label className="text-black pl-4">Select Category:</label>
+      <select
+        value={category}
+        onChange={(e) => handleCategoryChange(e.target.value)}
+      >
+        <option value="business">Business</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="general">General</option>
+      </select>
+
       <ul className="space-y-8">
         {articles.slice(0, 10).map((article, index) => (
           <li key={index} className="space-y-2">
