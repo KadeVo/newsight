@@ -37,22 +37,28 @@ const GenericNewsPage = () => {
       <h1 className="text-4xl font-bold tracking-tight text-center mb-8 text-black">
         Top Stories in {country}
       </h1>
-      <label className="text-black pl-4">Select Country:</label>
+      <label className="text-black pl-4">Country:</label>
       <select
         value={country}
         onChange={(e) => handleCountryChange(e.target.value)}
       >
+        <option disabled={true} value="">
+          Choose a country
+        </option>
         <option value="us">United States</option>
         <option value="jp">Japan</option>
         <option value="kr">Korea</option>
       </select>
       <br></br>
 
-      <label className="text-black pl-4">Select Category:</label>
+      <label className="text-black pl-4">Category:</label>
       <select
         value={category}
         onChange={(e) => handleCategoryChange(e.target.value)}
       >
+        <option disabled={true} value="">
+          Choose a category
+        </option>
         <option value="business">Business</option>
         <option value="entertainment">Entertainment</option>
         <option value="general">General</option>
