@@ -37,33 +37,38 @@ const GenericNewsPage = () => {
       <h1 className="text-4xl font-bold tracking-tight text-center mb-8 text-black">
         Top Stories in {country}
       </h1>
-      <label className="text-black pl-4">Country:</label>
-      <select
-        value={country}
-        onChange={(e) => handleCountryChange(e.target.value)}
-      >
-        <option disabled={true} value="">
-          Choose a country
-        </option>
-        <option value="us">United States</option>
-        <option value="jp">Japan</option>
-        <option value="kr">Korea</option>
-      </select>
-      <br></br>
-
-      <label className="text-black pl-4">Category:</label>
-      <select
-        value={category}
-        onChange={(e) => handleCategoryChange(e.target.value)}
-      >
-        <option disabled={true} value="">
-          Choose a category
-        </option>
-        <option value="business">Business</option>
-        <option value="entertainment">Entertainment</option>
-        <option value="general">General</option>
-      </select>
-
+      <div className="flex pb-10">
+        <div className="flex-1">
+          <label className="text-black pl-4 block mb-2 mt-4">Country:</label>
+          <select
+            value={country}
+            onChange={(e) => handleCountryChange(e.target.value)}
+            className="px-4 py-2 border border-gray-300 focus:outline-none focus:border-blue-500 rounded-md"
+          >
+            <option disabled={true} value="">
+              Choose a country
+            </option>
+            <option value="us">United States</option>
+            <option value="jp">Japan</option>
+            <option value="kr">Korea</option>
+          </select>
+        </div>
+        <div className="flex-1">
+          <label className="text-black pl-4 block mb-2 mt-4">Category:</label>
+          <select
+            value={category}
+            onChange={(e) => handleCategoryChange(e.target.value)}
+            className="px-4 py-2 border border-gray-300 focus:outline-none focus:border-blue-500 rounded-md"
+          >
+            <option disabled={true} value="">
+              Choose a category
+            </option>
+            <option value="business">Business</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="general">General</option>
+          </select>
+        </div>
+      </div>
       <ul className="space-y-8">
         {articles.slice(0, 10).map((article, index) => (
           <li key={index} className="space-y-2">
