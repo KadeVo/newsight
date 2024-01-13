@@ -2,17 +2,19 @@
 import { useState, useEffect } from 'react'
 import Article from '@/interaces/interfaces'
 import config from '../../config'
-import Image from 'next/image'
+import { useSearchParams } from 'next/navigation'
 
 const HomePage: React.FC = () => {
+  const searchParams = useSearchParams()
   const [articles, setArticles] = useState<Article[]>([])
   const apiKey = config.NEWS_API_KEY
+  const [sort, setSort] = useState(searchParams.get('sortBy') || '')
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const url = `https://newsapi.org/v2/top-headlines?country=us&pageSize=10&apiKey=${apiKey}`
-        const response = await fetch(url)
+        const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&pageSize=10&sortBy=${sort}&apiKey=${apiKey}`
+        const response = await fetch(apiUrl)
         if (!response.ok) {
           throw new Error('Network response was not ok')
         }
@@ -25,13 +27,30 @@ const HomePage: React.FC = () => {
     }
 
     fetchNews()
-  }, [])
+  }, [sort])
+
+  const handleSort = (newSort: string) => {
+    setSort(newSort)
+  }
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-4xl font-bold tracking-tight text-center mb-8 text-black">
         Top Stories
       </h1>
+      <label className="text-black pl-4 block mb-2 mt-4">Filter</label>
+      <select
+        value={sort}
+        onChange={(e) => handleSort(e.target.value)}
+        className="px-4 py-2 border border-gray-300 focus:outline-none focus:border-blue-500 rounded-md"
+      >
+        <option disabled={true} value="">
+          Filter
+        </option>
+        <option value="popularity">Popular</option>
+        <option value="relevancy">Relevant</option>
+        <option value="publishedAt">Newest</option>
+      </select>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {articles.slice(0, 10).map((article, index) => (
           <div
@@ -51,7 +70,7 @@ const HomePage: React.FC = () => {
               </div>
             ) : (
               <div className="flex justify-center items-center mx-auto">
-                <Image
+                <img
                   src="/images/placeholder.PNG"
                   alt="No Image available"
                   className="mx-auto"
