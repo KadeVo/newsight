@@ -8,6 +8,16 @@ export const useSearchParam = () => {
   const [country, setCountry] = useState(searchParams.get('country') || '')
   const [page, setPage] = useState(1)
   const [category, setCategory] = useState(searchParams.get('category') || '')
+  const categories = [
+    { value: '', label: 'Choose a category' },
+    { value: 'business', label: 'Business' },
+    { value: 'entertainment', label: 'Entertainment' },
+    { value: 'general', label: 'General' },
+    { value: 'health', label: 'Health' },
+    { value: 'science', label: 'Science' },
+    { value: 'sports', label: 'Sports' },
+    { value: 'technology', label: 'Technology' },
+  ]
 
   useEffect(() => {
     setCountry(searchParams.get('country') || '')
@@ -25,5 +35,6 @@ export const useSearchParam = () => {
     setCountry,
     setCategory,
     setPage,
+    categories,
   }
 }
