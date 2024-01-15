@@ -10,13 +10,14 @@ export const useSearchParam = () => {
   const [country, setCountry] = useState(
     searchParams.get('country') || defaultCountry
   )
+  const [sort, setSort] = useState(searchParams.get('sortBy') || 'publishedAt')
+
   const [page, setPage] = useState(1)
   const [category, setCategory] = useState(
     searchParams.get('category') || defaultCategory
   )
 
   const categories = [
-    { value: '', label: 'Choose a category' },
     { value: 'business', label: 'Business' },
     { value: 'entertainment', label: 'Entertainment' },
     { value: 'general', label: 'General' },
@@ -32,16 +33,18 @@ export const useSearchParam = () => {
     setPage(pageParam)
   }, [searchParams])
 
-  const apiUrl = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&page=${page}&apiKey=${apiKey}`
+  const apiUrl = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&page=${page}&sortBy=${sort}&apiKey=${apiKey}`
 
   return {
     apiUrl,
     country,
     page,
     category,
+    sort,
     setCountry,
     setCategory,
     setPage,
+    setSort,
     categories,
   }
 }
