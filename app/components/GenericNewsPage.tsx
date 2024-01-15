@@ -13,16 +13,11 @@ const GenericNewsPage = () => {
     setCategory,
     category,
     categories,
-    setSort,
-    sort,
   } = useSearchParam()
   const [articles, setArticles] = useState<Article[]>([])
 
   const handleCategoryChange = (newCategory: string) => {
     setCategory(newCategory)
-  }
-  const handleSort = (newSort: string) => {
-    setSort(newSort)
   }
 
   const handleCountryChange = (newCountry: string) => {
@@ -52,18 +47,6 @@ const GenericNewsPage = () => {
       </h1>
       <div className="flex pb-10">
         <div className="flex-1">
-          <select
-            value={sort}
-            onChange={(e) => handleSort(e.target.value)}
-            className="px-4 py-2 border border-gray-300 focus:outline-none focus:border-blue-500 rounded-md"
-          >
-            <option disabled={true} value="">
-              Filter
-            </option>
-            <option value="popularity">Popular</option>
-            <option value="relevancy">Relevant</option>
-            <option value="publishedAt">Newest</option>
-          </select>
           <label className="text-black pl-4 block mb-2 mt-4">Country:</label>
           <select
             value={country}
