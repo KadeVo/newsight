@@ -5,9 +5,16 @@ import { useState, useEffect } from 'react'
 export const useSearchParam = () => {
   const searchParams = useSearchParams()
   const apiKey = config.NEWS_API_KEY
-  const [country, setCountry] = useState(searchParams.get('country') || '')
+  const defaultCategory = 'general'
+  const defaultCountry = 'us'
+  const [country, setCountry] = useState(
+    searchParams.get('country') || defaultCountry
+  )
   const [page, setPage] = useState(1)
-  const [category, setCategory] = useState(searchParams.get('category') || '')
+  const [category, setCategory] = useState(
+    searchParams.get('category') || defaultCategory
+  )
+
   const categories = [
     { value: '', label: 'Choose a category' },
     { value: 'business', label: 'Business' },
