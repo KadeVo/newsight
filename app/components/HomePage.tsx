@@ -41,7 +41,7 @@ const HomePage: React.FC = () => {
       <h1 className="text-4xl font-bold tracking-tight text-center mb-8 text-black">
         Top Stories
       </h1>
-      <label className="text-black pl-4 block mb-2 mt-4">Filter</label>
+      {/* <label className="text-black pl-4 block mb-2 mt-4">Filter</label>
       <select
         value={sort}
         onChange={(e) => handleSort(e.target.value)}
@@ -53,7 +53,7 @@ const HomePage: React.FC = () => {
         <option value="popularity">Popular</option>
         <option value="relevancy">Relevant</option>
         <option value="publishedAt">Newest</option>
-      </select>
+      </select> */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {articles.slice(0, 10).map((article, index) => (
           <div
