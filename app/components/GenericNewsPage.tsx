@@ -41,7 +41,10 @@ const GenericNewsPage = () => {
   }, [apiUrl])
 
   return (
-    <div className="max-w-screen-md mx-auto p-4 text-center">
+    <div
+      data-testid="generic"
+      className="max-w-screen-md mx-auto p-4 text-center"
+    >
       <h1 className="text-4xl font-bold tracking-tight text-center mb-8 text-black">
         Top Stories in {country}
       </h1>
